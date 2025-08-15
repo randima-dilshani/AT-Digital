@@ -1,7 +1,7 @@
 [build]
   base = "landing-page"
-  publish = "build"
   command = "npm run build"
+  publish = "landing-page/dist"
 
 [[redirects]]
   from = "/*"
