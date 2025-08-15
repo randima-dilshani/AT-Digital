@@ -1,5 +1,7 @@
 import Navbar from "../pages/Navbar";
 import Footer from "../pages/Footer";
+import Content from "./Webcontent";
+import DigitalStrategy from "./Digitalstrategy";
 import heroBg from "../assets/HeroImage.png";
 
 export default function HomePage() {
@@ -98,7 +100,14 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+        <section className="flex justify-center py-16">
+          <Content />
+        </section>
+         <section className="flex justify-center">
+          <DigitalStrategy />
+        </section>
       </main>
+
       <Footer />
     </div>
   );
