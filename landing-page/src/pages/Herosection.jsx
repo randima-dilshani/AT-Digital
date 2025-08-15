@@ -11,27 +11,25 @@ export default function HomePage() {
       <Navbar />
       <main className="flex-1">
         {/* Hero Section */}
-<section
-  className="relative bg-cover bg-center bg-no-repeat min-h-[60vh] md:min-h-[700px] flex items-center"
-  style={{
-    backgroundImage: `url(${heroBg})`,
-    backgroundAttachment: "scroll",
-  }}
->
-  <div className="px-4 md:px-12">
-    <div className="bg-gradient-to-r from-[#4DCA79] to-[#1CBDDD] pt-6 pr-10 pb-8 pl-10 w-full max-w-[90%] sm:max-w-[600px]">
-      <h1 className="font-inter font-bold text-white text-2xl sm:text-3xl md:text-5xl leading-tight">
-        We Crush Your Competitors, Goals, And Sales Records - Without The B.S.
-      </h1>
-      <button className="mt-5 bg-[#F28D35] px-5 py-3 rounded text-white font-inter font-bold text-xs sm:text-sm uppercase">
-        Get Free Consultation
-      </button>
-    </div>
-  </div>
-</section>
-
-
-
+        <section
+          className="relative bg-cover bg-center bg-no-repeat min-h-[60vh] md:min-h-[700px] flex items-center"
+          style={{
+            backgroundImage: `url(${heroBg})`,
+            backgroundAttachment: "scroll",
+          }}
+        >
+          <div className="px-4 md:px-12 translate-y-12 sm:translate-y-20 md:translate-y-28">
+            <div className="bg-gradient-to-r from-[#4DCA79] to-[#1CBDDD] pt-6 pr-10 pb-8 pl-10 w-full max-w-[90%] sm:max-w-[600px]">
+              <h1 className="font-inter font-bold text-white text-2xl sm:text-3xl md:text-5xl leading-tight">
+                We Crush Your Competitors, Goals, And Sales Records - Without
+                The B.S.
+              </h1>
+              <button className="mt-5 bg-[#F28D35] px-5 py-3 rounded text-white font-inter font-bold text-xs sm:text-sm uppercase">
+                Get Free Consultation
+              </button>
+            </div>
+          </div>
+        </section>
 
         {/* Content */}
         <section className="flex justify-center py-16 px-4">
