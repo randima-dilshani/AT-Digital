@@ -1,8 +1,17 @@
 import { useState } from "react";
-import logo from "../assets/Logo.png"; 
+import { Menu, X } from "lucide-react";
+import logo from "../assets/Logo.png";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const navItems = [
+    { name: "HOME", href: "#" },
+    { name: "SERVICES", href: "#" },
+    { name: "ABOUT US", href: "#" },
+    { name: "CONTACT US", href: "#" },
+    { name: "CAREERS", href: "#" },
+  ];
 
   return (
     <nav
@@ -11,77 +20,55 @@ export default function Navbar() {
         backgroundColor: "hsla(243, 75%, 59%, 1)",
       }}
     >
-      <div
-        className="max-w-[1440px] mx-auto flex justify-between items-center"
-        style={{
-          width: "1440px",
-          height: "101.62127685546875px",
-          paddingTop: "26px",
-          paddingRight: "80px",
-          paddingBottom: "26px",
-          paddingLeft: "80px",
-        }}
-      >
-     {/* Logo */}
-<div className="flex items-center gap-[14px]">
-  <img
-    src={logo} 
-    alt="AT Digital Logo"
-    className="w-[226px] h-[49.62px] object-contain"
-  />
-</div>
+      <div className="w-full mx-auto flex justify-between items-center px-6 sm:px-10 lg:px-20 py-6">
+        {/* Logo */}
+        <div className="flex items-center gap-[14px]">
+          <img
+            src={logo}
+            alt="AT Digital Logo"
+            className="w-[180px] sm:w-[226px] h-auto object-contain"
+          />
+        </div>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8 font-medium">
-          <li className="cursor-pointer hover:opacity-80 font-medium text-[14px] leading-none w-[68px] h-[17px]">
-            SERVICES
-          </li>
-          <li className="cursor-pointer hover:opacity-80 font-medium text-[14px] leading-none w-[73px] h-[17px]">
-            ABOUT US
-          </li>
-          <li className="cursor-pointer hover:opacity-80 font-medium text-[14px] leading-none w-[92px] h-[17px]">
-            CONTACT US
-          </li>
-          <li className="cursor-pointer hover:opacity-80 font-medium text-[14px] leading-none w-[64px] h-[17px]">
-            CAREERS
-          </li>
+          {navItems.map((item, idx) => (
+            <li
+              key={idx}
+              className="cursor-pointer hover:opacity-80 text-[14px]"
+            >
+              {item.name}
+            </li>
+          ))}
         </ul>
 
         {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden focus:outline-none"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="white"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
+        <div className="md:hidden">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-white hover:bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-2"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d={
-                menuOpen
-                  ? "M6 18L18 6M6 6l12 12"
-                  : "M4 6h16M4 12h16M4 18h16"
-              }
-            />
-          </svg>
-        </button>
+            {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Navigation */}
       {menuOpen && (
-        <ul className="md:hidden px-[80px] pb-4 space-y-4">
-          <li className="cursor-pointer hover:opacity-80 font-medium text-[14px] leading-none w-[68px] h-[17px]">
-            SERVICES
-          </li>
-          <li className="hover:opacity-80 cursor-pointer">ABOUT US</li>
-          <li className="hover:opacity-80 cursor-pointer">CONTACT US</li>
-          <li className="hover:opacity-80 cursor-pointer">CAREERS</li>
-        </ul>
+        <div className="md:hidden mt-[10px] mx-4 p-4 bg-white text-black backdrop-blur-2xl rounded-2xl border border-gray-200 shadow-2xl animate-fade-in">
+          <nav className="flex flex-col items-center space-y-3">
+            {navItems.map((item, index) => (
+              <a
+                key={index}
+                href={item.href}
+                className="group flex items-center justify-between px-4 py-3 hover:text-blue-700 transition-all duration-300 font-medium rounded-xl hover:bg-gray-100 border border-transparent hover:border-gray-300 w-full text-center"
+                onClick={() => setMenuOpen(false)}
+              >
+                <span>{item.name}</span>
+              </a>
+            ))}
+          </nav>
+        </div>
       )}
     </nav>
   );

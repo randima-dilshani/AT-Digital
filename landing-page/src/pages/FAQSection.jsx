@@ -10,11 +10,13 @@ export default function FAQ() {
         "Lorem ipsum dolor sit amet consectetur. Faucibus commodo suscipit id ipsum. Elementum ultrices nulla faucibus odio est sed aliquam. Sapien massa morbi risus sagittis tortor integer.",
     },
     {
-      question: "Lorem ipsum dolor sit amet consectetur. Tortor scelerisque integer?",
+      question:
+        "Lorem ipsum dolor sit amet consectetur. Tortor scelerisque integer?",
       answer: "Answer text for question two goes here.",
     },
     {
-      question: "Lorem ipsum dolor sit amet consectetur. Faucibus scelerisque nunc?",
+      question:
+        "Lorem ipsum dolor sit amet consectetur. Faucibus scelerisque nunc?",
       answer: "Answer text for question three goes here.",
     },
   ];
@@ -24,29 +26,9 @@ export default function FAQ() {
   };
 
   return (
-    <section
-      style={{
-        width: "846px",
-        margin: "60px auto 80px auto", // space above footer
-        display: "flex",
-        flexDirection: "column",
-        backgroundColor: "#FFFFFF",
-      }}
-    >
+    <section className="w-full max-w-[846px] mx-auto my-16 flex flex-col bg-white px-4">
       {/* Title */}
-      <h3
-        style={{
-          fontFamily: "Poppins, sans-serif",
-          fontWeight: 600,
-          fontSize: "27px",
-          lineHeight: "33px",
-          letterSpacing: "0.4px",
-          color: "#5A3FFF",
-          textAlign: "center",
-          padding: "16px 0",
-          margin: 0,
-        }}
-      >
+      <h3 className="font-poppins font-semibold text-[#5A3FFF] text-xl md:text-2xl text-center py-4">
         Frequently asked questions
       </h3>
 
@@ -55,68 +37,31 @@ export default function FAQ() {
         <div
           key={index}
           onClick={() => toggleFAQ(index)}
-          style={{
-            padding: "24px",
-            borderRadius: "7px",
-            backgroundColor: openIndex === index ? "#F9F7FF" : "transparent",
-            transition: "background-color 0.2s ease",
-            cursor: "pointer",
-            marginBottom: "8px",
-          }}
-          onMouseEnter={(e) => {
-            if (openIndex !== index) e.currentTarget.style.backgroundColor = "#F9F7FF";
-          }}
-          onMouseLeave={(e) => {
-            if (openIndex !== index) e.currentTarget.style.backgroundColor = "transparent";
-          }}
+          className={`p-6 rounded-lg transition-colors duration-200 cursor-pointer mb-2 ${
+            openIndex === index ? "bg-[#F9F7FF]" : "hover:bg-[#F9F7FF]"
+          }`}
         >
           {/* Question Row */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
+          <div className="flex justify-between items-center">
             <p
-              style={{
-                fontFamily: "Inter, sans-serif",
-                fontWeight: 500,
-                fontSize: "22px",
-                lineHeight: "28px",
-                letterSpacing: "0px",
-                color: openIndex === index ? "#5A3FFF" : "#000000",
-                margin: 0,
-              }}
+              className={`font-inter font-medium text-lg md:text-xl leading-7 m-0 ${
+                openIndex === index ? "text-[#5A3FFF]" : "text-black"
+              }`}
             >
               {item.question}
             </p>
-<span
-  style={{
-    fontSize: "20px",
-    fontWeight: "bold",
-    color: openIndex === index ? "#4F46E5" : "#000000", // change on open
-    userSelect: "none",
-  }}
->
-  {openIndex === index ? "–" : "+"}
-</span>
-
+            <span
+              className={`text-xl font-bold select-none ${
+                openIndex === index ? "text-[#4F46E5]" : "text-black"
+              }`}
+            >
+              {openIndex === index ? "–" : "+"}
+            </span>
           </div>
 
           {/* Answer */}
           {openIndex === index && (
-            <p
-              style={{
-                fontFamily: "Inter, sans-serif",
-                fontWeight: 400,
-                fontSize: "18px",
-                lineHeight: "30px",
-                letterSpacing: "0px",
-                color: "#8C8C8C",
-                marginTop: "13px",
-              }}
-            >
+            <p className="font-inter text-[#8C8C8C] text-base leading-7 mt-3">
               {item.answer}
             </p>
           )}
