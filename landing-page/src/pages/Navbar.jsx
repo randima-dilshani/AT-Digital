@@ -6,7 +6,6 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "HOME", href: "#" },
     { name: "SERVICES", href: "#" },
     { name: "ABOUT US", href: "#" },
     { name: "CONTACT US", href: "#" },
@@ -54,22 +53,30 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Navigation */}
-      {menuOpen && (
-        <div className="md:hidden mt-[10px] mx-4 p-4 bg-white text-black backdrop-blur-2xl rounded-2xl border border-gray-200 shadow-2xl animate-fade-in">
-          <nav className="flex flex-col items-center space-y-3">
-            {navItems.map((item, index) => (
-              <a
-                key={index}
-                href={item.href}
-                className="group flex items-center justify-between px-4 py-3 hover:text-blue-700 transition-all duration-300 font-medium rounded-xl hover:bg-gray-100 border border-transparent hover:border-gray-300 w-full text-center"
-                onClick={() => setMenuOpen(false)}
-              >
-                <span>{item.name}</span>
-              </a>
-            ))}
-          </nav>
-        </div>
-      )}
+    {menuOpen && (
+  <div className="md:hidden fixed top-0 left-0 w-[80%] h-full p-4 bg-white text-black backdrop-blur-2xl shadow-2xl animate-fade-in z-50">
+    <div className="flex justify-end mb-6">
+      <button
+        onClick={() => setMenuOpen(false)}
+        className="text-black p-2"
+      >
+        <X className="h-6 w-6" />
+      </button>
+    </div>
+    <nav className="flex flex-col space-y-6 text-lg font-medium">
+      {navItems.map((item, index) => (
+        <a
+          key={index}
+          href={item.href}
+          className="hover:text-blue-700 transition-all duration-300"
+          onClick={() => setMenuOpen(false)}
+        >
+          {item.name}
+        </a>
+      ))}
+    </nav>
+  </div>
+)}
     </nav>
   );
 }
